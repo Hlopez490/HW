@@ -21,6 +21,8 @@ string EnterString();
 void PrintConceptsWord(string ArrayConcepts[100], int NumberConcepts, string Word);
 void PrintConceptsWithoutWord(string ArrayConcepts[100], int NumberConcepts, string Word);
 void SortConcepts(string ArrayConcepts[100], int Number);
+
+// Custom Function to format string 
 string FormatString(string ogString);
 
 int main()
@@ -112,14 +114,14 @@ void PrintConceptsWord(string ArrayConcepts[100], int NumberConcepts, string Wor
 {
     // Prints out format for Word
     cout << "--- The concepts containing " << Word << " are: \n";
-    
+    // Format word for finding instances in another string
     Word = FormatString(Word);
 
     // For loop that searrches through ArrayConcepts
     for (int i = 0; i < NumberConcepts; i++) {
-
+        // Create a temporary string to format and compare
         string tempString = FormatString(ArrayConcepts[i]);
-        // If a value in the array contains the given Word
+        // If temp String contains inputted Word
         if (tempString.find(Word) != string::npos) {
             // Prints to console the given concept that matches the WORD
             cout << ArrayConcepts[i] << endl;
@@ -132,14 +134,14 @@ void PrintConceptsWithoutWord(string ArrayConcepts[100], int NumberConcepts, str
 {
     // Prints out format for Word
     cout << "--- The concepts that do not contain " << Word << " are: \n";
-
+    // Format word for finding instances in another string
     Word = FormatString(Word);
 
     // For loop that searrches through ArrayConcepts
     for (int i = 0; i < NumberConcepts; i++) {
-
+        // Create a temporary string to format and compare
         string tempString = FormatString(ArrayConcepts[i]);
-        // If a value in the array doesn't equal the given Word
+        // If temp String contains inputted Word
         if (tempString.find(Word) == string::npos) {
             // Prints to console the given concepts that don't equal the WORD
             cout << ArrayConcepts[i] << endl;
