@@ -5,8 +5,6 @@
 #include <cstring>
 using namespace std;
 
-#define _GLIBCXX_USE_CXX11_ABI 0
-
 /*
 In this program we implemeted the given assingment functions, where we start off by reading a file
 specifically named "LIST.txt" upon reading the formatted file we enter all of the values from the file
