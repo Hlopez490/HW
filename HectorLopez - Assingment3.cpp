@@ -2,7 +2,10 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstring>
 using namespace std;
+
+#define _GLIBCXX_USE_CXX11_ABI 0
 
 /*
 In this program we implemeted the given assingment functions, where we start off by reading a file
@@ -18,6 +21,7 @@ string EnterString();
 void PrintConceptsWord(string ArrayConcepts[100], int NumberConcepts, string Word);
 void PrintConceptsWithoutWord(string ArrayConcepts[100], int NumberConcepts, string Word);
 void SortConcepts(string ArrayConcepts[100], int Number);
+string FormatString(string ogString);
 
 int main()
 {
@@ -108,10 +112,15 @@ void PrintConceptsWord(string ArrayConcepts[100], int NumberConcepts, string Wor
 {
     // Prints out format for Word
     cout << "--- The concepts containing " << Word << " are: \n";
+    
+    Word = FormatString(Word);
+
     // For loop that searrches through ArrayConcepts
     for (int i = 0; i < NumberConcepts; i++) {
-        // If a value in the array equals the given Word
-        if (ArrayConcepts[i] == Word) {
+
+        string tempString = FormatString(ArrayConcepts[i]);
+        // If a value in the array contains the given Word
+        if (tempString.find(Word) != string::npos) {
             // Prints to console the given concept that matches the WORD
             cout << ArrayConcepts[i] << endl;
         }
@@ -123,10 +132,15 @@ void PrintConceptsWithoutWord(string ArrayConcepts[100], int NumberConcepts, str
 {
     // Prints out format for Word
     cout << "--- The concepts that do not contain " << Word << " are: \n";
+
+    Word = FormatString(Word);
+
     // For loop that searrches through ArrayConcepts
     for (int i = 0; i < NumberConcepts; i++) {
+
+        string tempString = FormatString(ArrayConcepts[i]);
         // If a value in the array doesn't equal the given Word
-        if (ArrayConcepts[i] != Word) {
+        if (tempString.find(Word) == string::npos) {
             // Prints to console the given concepts that don't equal the WORD
             cout << ArrayConcepts[i] << endl;
         }
@@ -170,6 +184,12 @@ void SortConcepts(string ArrayConcepts[100], int NumberConcepts)
 }
 
 
+string FormatString(string ogstring){
+    for (int i = 0; i < ogstring.length(); i++){
+  		ogstring[i] = toupper(ogstring[i]);
+  	}
+    return ogstring;
+}
 
 
 
