@@ -185,13 +185,12 @@ void SortConcepts(string ArrayConcepts[100], int NumberConcepts)
     }
 }
 
-
+// Iterates through the string and creates upper case characters for comparison
 string FormatString(string ogstring){
+    // Iterates through string
     for (int i = 0; i < ogstring.length(); i++){
+        // Changes character in string to upper case
   		ogstring[i] = toupper(ogstring[i]);
   	}
     return ogstring;
 }
-
-
-
